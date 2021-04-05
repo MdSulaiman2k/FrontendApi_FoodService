@@ -1,6 +1,5 @@
 .nav-link{
    padding-left  : 16px ;
-   padding-right:16px ;
    font-size : 1.3rem ;
    font-family: 'EB Garamond', serif;
 }
@@ -24,8 +23,6 @@ h4{
 
 .second-items{
     padding-left :7% ;
-    min-height: 10rem;
-    max-height: auto;
     background-color: white;
 }
 
@@ -64,8 +61,8 @@ hr{
     font-size: 30px;
     font-weight: 500;
     color: black;
-    padding-bottom: 0px;
-    margin-top: 0px;
+    padding-bottom: 14px;
+    margin-top: 10px;
     margin-left : 80px;
     font-family: 'EB Garamond', serif;
 
@@ -85,20 +82,9 @@ h2{
 
 }
 
-.col {
-   padding:  5px ;
-   margin-left: 2rem;
-   box-sizing: border-box;
-   height : 30%;
-  
-}
 
-.col:hover{
-    border : 1px solid #888888 ;
-    box-shadow: 1px 2px #888888;
-    cursor:pointer;
-    color : #23283f ;
-}
+
+
 
 
 
@@ -110,22 +96,20 @@ h2{
 }
 
 .foodimg{
-    width:20% ;
+    width: 70% ;
     height: 90%;
-    margin : 5px 2px 5px 5px ; 
     border-radius: 5px;
-    position:relative;
+    margin : 30px 0px 2px 60px;
 }
 
 .fooditem{
-    margin : 30px ;
+    margin : 38px 0px auto 0px ;
     text-align: left;
     position: relative ;
-    bottom:200px;
-    left: 300px;
     line-height: 1;
     color:white;
 }
+
 
 .foodhead{
     font-family: 'Open Sans', sans-serif;
@@ -162,18 +146,14 @@ h2{
 }
 
 .vis{
-    display: inline-block ;
-    width : 100%;
-    height : 250px;
     background-color:#23283f ;
-    padding : 35px ;
-    padding-left: 35px; 
-    position: absolute;
-    
+    height: 250px;
     }
 
-  .food{
-     position: relative;
-     top : 40% ;
-  }
+ .container-fluiod{
+    position: relative;
+    bottom : 137px;
+ }
+
+ 
 
