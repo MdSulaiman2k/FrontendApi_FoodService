@@ -24,8 +24,19 @@ const sendreqforresdata = (reqdata , reqtime) => {
             jsarray = data["data"]  
             if(jsarray.length >= 1)
                render(jsarray)
-            else
+            else{
                nodata = true
+               if(scroll == 0){
+                $("#restaurantContainer").html("<center><div style='position:relative;left:-40px'><h5>Oh! There’s not much left</h5><br>\
+                We can’t find anything related va to your search.<br>\
+                Try a different search.</div></center>")
+              }
+            }
+    },
+    error: function(status){
+      $("#restaurantContainer").html("<center><div style='position:relative;left:-40px'><h5>Oh! There’s not much left</h5><br>\
+      We can’t find anything related to your search.<br>\
+      Try a different search.</div></center>")
     },
     async : false 
   });
@@ -33,14 +44,20 @@ const sendreqforresdata = (reqdata , reqtime) => {
 
 const searchingquery = (reqsearch , reqdata , reqtime ) =>{
   $.ajax({
-    url: 'http://localhost:3000/api/v1/restaurants',
+    url: 'http://localhost:3000/api/v1/restaurants/'+ reqsearch,
     method: 'GET',
     dataType: 'json',
-    data : {page: searchscroll  , searching: reqsearch ,time: reqtime , data: reqdata }  ,
+    data : {page: searchscroll ,time: reqtime , data: reqdata }  ,
     success: function(data , status){
             jsarray = data["data"]  
-            if(jsarray.length >= 1)
-               render(jsarray)
+            console.log(jsarray.length , searchscroll)
+            if(jsarray.length == 0 &&  searchscroll == 0 ){
+                $("#restaurantContainer").html("<center><div style='position:relative;left:-40px'><h5>Oh! There’s not much left</h5><br>\
+                We can’t find anything related to your search.<br>\
+                Try a different search.</div></center>")
+            }
+            else{
+            render(jsarray) }
     },
     async : false 
   });
@@ -68,7 +85,7 @@ const render = (data) => {
   }
   if(data.length > 3){
      scroll++
-     searchscroll++ ;
+     searchscroll++; 
   }
   
 
@@ -87,16 +104,26 @@ else if (rHeight > tHeight  && !nodata ) {
 });
 
 $("#search").click(function(){
-  searchscroll = 0 
-  console.log($("#searchquery").val())
-  searchingquery( $("#searchquery").val() , 4 , t)
+  if($("#searchquery").val() != ""){
+      searchscroll = 0 
+      console.log($("#searchquery").val())
+      searchingquery( $("#searchquery").val() , 3 , t)
+  }
+  else{
+    sendreqforresdata(3 , t) ;
+  }
 });
 
 $("input").keypress(  function(){
   if(event.key === 'Enter'){
-  searchscroll = 0 
-  console.log($("#searchquery").val())
-  searchingquery( $("#searchquery").val() , 4 , t)}
+   if($("#searchquery").val() != ""){
+      searchscroll = 0 
+      console.log($("#searchquery").val())
+      searchingquery( $("#searchquery").val() , 3 , t)
+  }
+  else{
+    sendreqforresdata(3 , t) ;
+  }}
 });
 
 
