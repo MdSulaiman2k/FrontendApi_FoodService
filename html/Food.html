@@ -41,45 +41,93 @@
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
    <span class="navbar-toggler-icon"></span>
    </button>
+   <ul class="navbar-nav ml-auto" >
+    <li class="nav-item" style="padding: 15px;padding-right:0"> </li>
+    <li class="nav-item" style="padding-right: 15px;padding-left:15px" >	
+  <a class="nav-link cart" href="varuthu"  id="navbar" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-shopping-cart"></i>
+     Cart
+  </a>
 </nav>
     
-       <div class="vis">
+       <div class="vis bg-light">
         <div class="row ">
-            <div class="col-lg-3 col-md-3 col-sm-5">
-                <img src="https://englishtribuneimages.blob.core.windows.net/gallary-content/2021/1/2021_1$largeimg_1922831586.jpg" class="foodimg" />
+            <div class="col-lg-3 col-md-3 col-sm-5 bg-lite ">
+                <img src="" alt="no Photos" class="foodimg" />
             </div>
             <div class="col-lg-5 col-md-5 col-sm-7">
                 <div class="fooditem">
                     <div class="absfood"> 
-                        <h3 class="foodhead">food name</h3>
-                        <p class="fooddes hot-cat">food desc </p>
-                        <p class="foodloc">location</p>
-                        <p class="foodrating"><i class="far fa-star"></i></p>
+                        <h3 class="foodhead"></h3>
+                        <p class="fooddes hot-cat"></p>
+                        <p class="foodloc"></p>
+                        <p class="foodrating"></p>
                     </div>
                 </div>
             </div>
         </div>
        
     </div>
-        <form class="d-flex col-lg-10 col-md-10  col-sm-12 " style="margin-top: 1rem;margin-left:4rem; ">
+        <div class="d-flex col-lg-10 col-md-10  col-sm-12 " style="margin-top: 1rem;margin-left:4rem;margin-bottom: 3rem; ">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-primary" type="submit">Search</button>
-       </form>
+        </div>
        
        <div class="container">
            <div class="row"> 
-               <div class="col col-lg-7 col-md-7 col-sm-7 bg-dark" style="margin-top:1.3rem;margin-left:1rem; ">
-                   dARK
+               <div class="col col-lg-8 col-md-8 col-sm-8 foodcontainer ">
+                   <div class="row">
+                       <div class="col">
+                        <p class="foodrating"><i class="far fa-star"></i> </p>
+                       <h5 class="foodcontainer-name">sudo apt-get install redis-server</h5>
+                       <div class="row">
+                           <div class="col col-lg-2"><p class="foodcontainer-price">&#x20B9 300</p></div>
+                           <div class="col btn-incre  col-lg-6"><button class="btn btn-sub btn-light">-</button>
+                           <!-- <div class="col col-lg-1"> -->
+                               <div class="btn btn-icre-decre btn-light " value="0">add</div>
+                           <!-- <div class="col col-lg-1"> -->
+                               <button class="btn btn-add btn-light">+</button></div>
+                       </div>
+                       </div>
+                       <div class="col col-lg-3">
+                           <img src="../images/food.png" class="foodcontainer-image" />
+                        </div>
+
+                    </div>
                </div>
+               <div class="col col-lg-8 col-md-8 col-sm-8 foodcontainer ">
+                <div class="row">
+                    <div class="col">
+                     <p class="foodrating"><i class="far fa-star"></i> </p>
+                    <h5 class="foodcontainer-name">sudo apt-get install redis-server</h5>
+                    <p class="foodcontainer-price">&#x20B9 300</p>
+                    </div>
+                    <div class="col col-lg-3">
+                        <img src="../images/food.png" class="foodcontainer-image" />
+                     </div>
+                 </div>
+            </div>
+            <div class="col col-lg-8 col-md-8 col-sm-8 foodcontainer ">
+                <div class="row">
+                    <div class="col">
+                     <p class="foodrating"><i class="far fa-star"></i> </p>
+                    <h5 class="foodcontainer-name">sudo apt-get install redis-server</h5>
+                    <p class="foodcontainer-price">&#x20B9 300</p>
+                    </div>
+                    <div class="col col-lg-3" id="varuthu">
+                        <img src="../images/food.png" class="foodcontainer-image" />
+                     </div>
+                 </div>
+            </div>
             </div>
             <div class="row"> 
-                <div class="col col-lg-7 col-md-7 col-sm-7 bg-dark" style="margin-top:1.3rem;margin-left:1rem; ">
-                    dARK
+                <div class="col col-lg-8 col-md-8 col-sm-8  foodcontainer "  >
+                   
+                   
                 </div>
              </div>
              <div class="row"> 
-                <div class="col col-lg-7 col-md-7 col-sm-7 bg-dark" style="margin-top:1.3rem;margin-left:1rem; ">
-                    dARK
+                <div class="col col-lg-8 col-md-8 col-sm-8  foodcontainer ">
+                   
                 </div>
              </div>
              
@@ -87,7 +135,8 @@
     
 
 
-     <script src="../javascript/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="../javascript/Fooddesign.js"></script>
     
 </body>
 </html>

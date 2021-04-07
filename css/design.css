@@ -90,6 +90,7 @@ h2{
    margin-left: 2rem;
    box-sizing: border-box;
    height : 30%;
+   margin-bottom: 2rem;
   
 }
 
@@ -106,7 +107,7 @@ h2{
     width : 95% ; 
     min-height: 20%;
     max-height:  30%;
-    margin : 5px 2px 5px 5px ; 
+    margin : 10px 2px 5px 5px ; 
 }
 
 .foodimg{
