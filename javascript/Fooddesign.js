@@ -1,12 +1,12 @@
 jsarray = []
-
+restaurants = sessionStorage.getItem("restaurants").slice(4)
 $.ajax({
-    url: 'http://localhost:3000/api/v1/restaurants/'+ sessionStorage.getItem("restaurants" ),
+    url: 'http://localhost:3000/api/v1/restaurants/'+ restaurants,
     method: 'GET',
     dataType: 'json',
     data : {page: 1  , data: 1 }  ,
     success: function(data , status){
-            jsarray = data 
+            jsarray = data.data 
             console.log(jsarray)  
             loadRes(jsarray) 
     }

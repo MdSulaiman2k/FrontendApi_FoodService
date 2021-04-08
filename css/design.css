@@ -71,6 +71,8 @@ hr{
 
   }
 
+ 
+
 h2{
     color : white ;
     line-height: 2;
@@ -87,18 +89,22 @@ h2{
 
 .col {
    padding:  5px ;
-   margin-left: 2rem;
+   margin-left: 0.5rem;
    box-sizing: border-box;
    height : 30%;
    margin-bottom: 2rem;
   
 }
 
-.col:hover{
-    border : 1px solid #888888 ;
-    box-shadow: 1px 2px #888888;
+.enable:hover{
+    border : 1px solid #d6bfbf ;
     cursor:pointer;
     color : #23283f ;
+}
+
+.disabledclass{
+    margin-top : 4rem;
+
 }
 
 

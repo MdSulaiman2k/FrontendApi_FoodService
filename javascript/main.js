@@ -1,17 +1,12 @@
 var jsarray = []
 var scroll = 0 
 var searchscroll = 0 
+var active_record = 0 
 var rescontainer = document.getElementById("restaurantContainer")
 console.log($("#searchquery").val())
 var n = new Date().getHours()
 nodata  = false 
-var t = "D"
-if(n < 11)
-  t = "B" 
-else if(n < 15)
-  t = "L"
-else if(n < 18)
-  t = "S"
+
 
 const privacycom = () => {
     return ("<div class=\"container-fluiod\" style=\"margin-top:2rem;background-color: #e9e9eb;display: inline-block;height: 18rem;width: 100%;padding:2rem;line-height: 1.6;\">\
@@ -20,13 +15,13 @@ const privacycom = () => {
   }
   
 
-console.log(t , n)
-const sendreqforresdata = (reqdata , reqtime) => {
+
+const sendreqforresdata = (reqdata ) => {
   $.ajax({
     url: 'http://localhost:3000/api/v1/restaurants',
     method: 'GET',
     dataType: 'json',
-    data : {page: scroll  , time : reqtime , data: reqdata }  ,
+    data : {page: scroll , data: reqdata , active: active_record  }  ,
     success: function(data , status){
             jsarray = data["data"]  
             if(jsarray.length >= 1)
@@ -52,15 +47,15 @@ const sendreqforresdata = (reqdata , reqtime) => {
   });
 }
 
-const searchingquery = (reqsearch , reqdata , reqtime ) =>{
+const searchingquery = (reqsearch , reqdata  ) =>{
   $.ajax({
     url: 'http://localhost:3000/api/v1/restaurants/'+ reqsearch,
     method: 'GET',
     dataType: 'json',
-    data : {page: searchscroll ,time: reqtime , data: reqdata }  ,
+    data : {page: searchscroll  , data: reqdata }  ,
     success: function(data , status){
             jsarray = data["data"]  
-            console.log(jsarray.length , searchscroll)
+            console.log(jsarray)
             if(jsarray.length == 0 &&  searchscroll == 0 ){
                 $("#restaurantContainer").html("<center><div style='position:relative;left:-40px'><h5>Oh! There’s not much left</h5><br>\
                 We can’t find anything related to your search.<br>\
@@ -82,11 +77,20 @@ const render = (data) => {
   scroll++
   searchscroll++ ;
   for(var i = 0 ; i < data.length ;i++){
-   component += "<div id= \"rest" + data[i].id +"\"    class =\"col col-lg-3 col-md-3 col-sm-4 bg-light\">"  + " <img class = \"imgitems\" src=" + 
+    
+   component += "<div id= \"rest" + data[i].id +"\"    class =\"enable col col-lg-3 col-md-3 col-sm-4 bg-light\">"  ;
+      if(data[i].status == 'INA'){
+          component += "<p class='bg-secondary text-light' style='display:inline-block;padding:8px;font-size:10px;border-radius:5px;'>Hotel was INACTIVE</p>"
+      }
+      else{
+        component += "<p class='bg-danger text-light' style='display:inline-block;padding:8px;font-size:10px;border-radius:5px;'>ACTIVE</p>"
+      }
+      component += " <img class = \"imgitems\" src=" + 
       data[i].hotelimg + "/>" + "<h5 class =\"hot-name\">" +  data[i].hotelname + "</h5>" + "<p class=\"hot-cat\">" +
       data[i].hotel_cate + "</p>" + "<p><span class=\"hot-rating\" ><i class=\"far fa-star\"></i>" + 
       data[i].rating + "</span></p> <hr /></a> </div>"
   }
+  
   component += "</div>"
   if(searchscroll != 1){
      rescontainer.insertAdjacentHTML('beforeend' , component  ) 
@@ -95,6 +99,19 @@ const render = (data) => {
     $("#restaurantContainer").html(component);
     $(".privacy").html(privacycom())
   }
+  let inactivebool = false 
+  for(var i = 0 ; i < data.length ; i++){
+    if(data[i].status == 'INA'){
+       $("#rest" + data[i].id ).attr('disabled', 'disabled');
+       $("#rest" + data[i].id ).removeClass("enable") ;
+       $("#rest" + data[i].id ).css("background-color" , "#dddddd")  ;
+       inactivebool = true 
+
+    }
+  }
+  if(inactivebool){
+    active_record++ ;
+  }
   if(data.length > 3){
      scroll++
      searchscroll++; 
@@ -102,16 +119,16 @@ const render = (data) => {
   
 
 }
-sendreqforresdata(6 , t)
+sendreqforresdata(6 )
 
 $(window).scroll(function() {
   tHeight = document.body.offsetHeight;
   rHeight = Math.floor(window.innerHeight + window.scrollY)
 if($("#searchquery").val() != ""){
-     searchingquery( $("#searchquery").val() , 3 , t)
+     searchingquery( $("#searchquery").val() , 3 )
     }
 else if ((document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)   && !nodata ) {
-       sendreqforresdata(3 , t) ;
+       sendreqforresdata(3 ) ;
     }
 });
 
@@ -119,10 +136,10 @@ $("#search").click(function(){
   if($("#searchquery").val() != ""){
       searchscroll = 0 
       console.log($("#searchquery").val())
-      searchingquery( $("#searchquery").val() , 3 , t)
+      searchingquery( $("#searchquery").val() , 3 )
   }
   else{
-    sendreqforresdata(3 , t) ;
+    sendreqforresdata(3 ) ;
   }
 });
 
@@ -131,16 +148,17 @@ $("input").keypress(  function(){
    if($("#searchquery").val() != ""){
       searchscroll = 0 
       console.log($("#searchquery").val())
-      searchingquery( $("#searchquery").val() , 3 , t)
+      searchingquery( $("#searchquery").val() , 3)
   }
   else{
-    sendreqforresdata(3 , t) ;
+    sendreqforresdata(3 ) ;
   }}
 });
 
 
 
-$(document).on("click",".col", function() {
+$(document).on("click",".enable", function() {
+  
   sessionStorage.setItem("restaurants" , this.id )
   console.log(this.id)
   window.location = "food.html"
