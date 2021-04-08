@@ -161,6 +161,17 @@ $(document).on("click",".enable", function() {
   
   sessionStorage.setItem("restaurants" , this.id )
   console.log(this.id)
+  let id = this.id.slice(4)
+  $.ajax({
+    url: 'http://localhost:3000/api/v1/restaurants/' + id,
+    method: 'PUT',
+    dataType: 'json',
+    success: function(data , status){
+         console.log("added succesfully")
+    },
+    async : false 
+  });
+  
   window.location = "food.html"
 });
 
