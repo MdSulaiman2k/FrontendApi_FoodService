@@ -41,19 +41,25 @@ h4{
 }
 
 .foodcontainer{
-    height : 12rem ;
-    border-bottom: 2px  solid #d4d5d9; 
-    margin-left:1rem;
-    padding-left: 2.7rem;
-    padding-top: 1rem;
-  
+  margin : 3rem;
+  padding : 1.4rem  auto 0.5rem 2.0rem;
+  padding-top:1.4rem ;
+  width : 700px;
+  border-bottom: 2px solid #d4d5d9;
 }
 
 .foodcontainer-image{
-    width : 85% ;
-    height : 60% ;
+    width : 95% ;
+    height : 90% ;
     padding-top: 0.5rem;
     
+}
+
+.foodcontainer-rating{
+    background-color: #ff4c68;
+    display: inline-block;
+    padding : 0.6rem;
+    border-radius: 5px;
 }
 
 .foodcontainer-name{
@@ -94,7 +100,16 @@ hr{
     display: inline-block;
     position: relative;
     left : 1rem;
+    margin-left : 1rem;
+   
     visibility: hidden;
+}
+.btn {
+    margin-top : -0.5rem;
+}
+
+.btn-outline-primary{
+    margin-top : 0.0rem ; 
 }
 
 .topic{
